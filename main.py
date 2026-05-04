@@ -11,7 +11,7 @@ if 5 <= age <= 8:
     ageGroup = "58.csv"
 elif 9 <= age <= 13:
     ageGroup = "913.csv"
-elif 14 <= x <= 17:
+elif 14 <= age <= 17:
     ageGroup = "1417.csv"
 else:
     ageGroup = "MA.csv" 
@@ -21,7 +21,7 @@ df = pd.read_csv(f"/data/{ageGroup}")
 
 vectorizer = TfidfVectorizer(max_features=500)
 X = vectorizer.fit_transform(df["message"].astype(str)).toarray()
-y = df["appropriate"].apply(encodeSentiment)
+y = df["appropriate"].apply(encodeApropriate)
 
 
 
