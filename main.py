@@ -53,3 +53,35 @@ class Model(nn.Module):
 X = torch.FloatTensor(X)
 y = torch.LongTensor(df["sentiment"].apply(encodeAppropriate).values)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)
+torch.manual_seed(41)
+model = Model()
+criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+
+# train it
+epochs = 1500
+
+for i in range(epochs):
+    # get result
+    y_pred = model(X_train)
+    # get loss
+    loss = criterion(y_pred, y_train)
+    # reset gradient
+    optimizer.zero_grad()
+    # go backwards and fix everything
+    loss.backward()
+    optimizer.step()
+    # print it out every 10 epochs
+    if i % 10 == 0:
+        predictions = torch.argmax(y_pred, dim=1)
+        accuracy = (predictions == y_train).float().mean()
+        print(accuracy)
+# get the test results
+with torch.no_grad():
+    model.eval()
+    test_outputs = model(X_test)
+    predictions = torch.argmax(test_outputs, dim=1)
+    accuracy = (predictions == y_test).float().mean()
+    print(f"Test Accuracy: {accuracy.item():.4f}")
+with torch.no_grad():
+    model.eval()
