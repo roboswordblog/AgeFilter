@@ -16,7 +16,7 @@ elif 14 <= x <= 17:
 else:
     ageGroup = "MA.csv" 
 
-
+df = pd.read_csv(f"/data/{ageGroup}")
 
 class Model(nn.Module):
     def __init__(self):
@@ -32,3 +32,5 @@ class Model(nn.Module):
         x = torch.relu(self.fc3(x))
         x = self.out(x)
         return x
+
+
