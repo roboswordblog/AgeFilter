@@ -18,6 +18,12 @@ else:
 
 df = pd.read_csv(f"/data/{ageGroup}")
 
+
+vectorizer = TfidfVectorizer(max_features=500)
+
+
+
+
 class Model(nn.Module):
     def __init__(self):
         super().__init__()
