@@ -23,12 +23,13 @@ elif 14 <= age <= 17:
 else:
     ageGroup = "MA.csv" 
 
-df = pd.read_csv(f"/data/{ageGroup}")
+df = pd.read_csv(f"data/{ageGroup}")
 
 
 vectorizer = TfidfVectorizer(max_features=500)
 X = vectorizer.fit_transform(df["message"].astype(str)).toarray()
 y = df["appropriate"].apply(encodeAppropriate)
+input_size = X.shape[1]
 
 
 
@@ -36,8 +37,8 @@ y = df["appropriate"].apply(encodeAppropriate)
 class Model(nn.Module):
     def __init__(self):
         super().__init__()
-        self.fc1 = nn.Linear(300, 32)
-        self.fc2 = nn.Linear(32, 32)
+        self.fc1 = nn.Linear(input_size, 100)
+        self.fc2 = nn.Linear(100, 32)
         self.fc3 = nn.Linear(32, 16)
         self.fc4 = nn.Linear(16, 8)
         self.out = nn.Linear(8, 2)
@@ -51,7 +52,7 @@ class Model(nn.Module):
         return x
 
 X = torch.FloatTensor(X)
-y = torch.LongTensor(df["sentiment"].apply(encodeAppropriate).values)
+y = torch.LongTensor(df["appropriate"].apply(encodeAppropriate).values)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)
 torch.manual_seed(41)
 model = Model()
