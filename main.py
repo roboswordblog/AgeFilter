@@ -20,6 +20,8 @@ df = pd.read_csv(f"/data/{ageGroup}")
 
 
 vectorizer = TfidfVectorizer(max_features=500)
+X = vectorizer.fit_transform(df["message"].astype(str)).toarray()
+y = df["appropriate"].apply(encodeSentiment)
 
 
 
