@@ -16,5 +16,19 @@ elif 14 <= x <= 17:
 else:
     ageGroup = "MA.csv" 
 
-class Model(nn.Model):
-    pass
+
+
+class Model(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.fc1 = nn.Linear(300, 32)
+        self.fc2 = nn.Linear(32, 32)
+        self.fc3 = nn.Linear(32, 16)
+        self.out = nn.Linear(16, 2)
+
+    def forward(self, x):
+        x = torch.relu(self.fc1(x))
+        x = torch.relu(self.fc2(x))
+        x = torch.relu(self.fc3(x))
+        x = self.out(x)
+        return x
