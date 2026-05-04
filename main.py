@@ -56,7 +56,7 @@ y = torch.LongTensor(df["appropriate"].apply(encodeAppropriate).values)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)
 torch.manual_seed(41)
 model = Model()
-criterion = nn.CrossEntropyLoss()
+criterion = nn.BCEWithLogitsLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
 # train it
