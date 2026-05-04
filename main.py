@@ -14,4 +14,6 @@ elif 14 <= x <= 17:
     ageGroup = "1417.csv"
 else:
     ageGroup = "MA.csv" 
-   
+
+class Model(nn.Model):
+    pass
