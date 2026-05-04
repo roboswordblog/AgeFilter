@@ -5,6 +5,13 @@ import torch.nn.functional as F
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 
+
+def encodeAppropriate(x):
+    if x == "Yes":
+        return 1.0
+    else:
+        return 0.0
+
 age = int(input("What is your age? "))
 ageGroup = ""
 if 5 <= age <= 8:
@@ -21,7 +28,7 @@ df = pd.read_csv(f"/data/{ageGroup}")
 
 vectorizer = TfidfVectorizer(max_features=500)
 X = vectorizer.fit_transform(df["message"].astype(str)).toarray()
-y = df["appropriate"].apply(encodeApropriate)
+y = df["appropriate"].apply(encodeAppropriate)
 
 
 
