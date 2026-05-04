@@ -48,4 +48,6 @@ class Model(nn.Module):
         x = self.out(x)
         return x
 
+X = torch.FloatTensor(X)
+y = torch.LongTensor(df["sentiment"].apply(encodeAppropriate).values)
 
