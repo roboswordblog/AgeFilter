@@ -8,11 +8,14 @@ def index():
 
 @app.route("/login", methods=["Get", "Post"])
 def login():
-    if request.methods == "GET":
+
+    if request.method == "GET":
         return render_template("login.html")
-    elif request.methods == "POST":
-        # add the datamanage later
+
+    elif request.method == "POST":
         return render_template("home.html")
+    return None
+
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
