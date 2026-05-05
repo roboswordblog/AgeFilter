@@ -22,4 +22,4 @@ def signup():
 def signupData():
     return {"takenUsers": ["BOBBY", "CHACHA", "Robosword"]}
 
-app.run()
+app.run(debug=True)
