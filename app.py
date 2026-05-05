@@ -8,7 +8,6 @@ def index():
 
 @app.route("/login", methods=["Get", "Post"])
 def login():
-
     if request.method == "GET":
         return render_template("login.html")
 
