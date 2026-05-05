@@ -21,3 +21,5 @@ def signup():
 @app.route("/signupData", methods=["GET"])
 def signupData():
     return {"takenUsers": ["BOBBY", "CHACHA", "Robosword"]}
+
+app.run()
