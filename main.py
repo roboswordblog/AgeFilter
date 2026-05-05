@@ -30,6 +30,7 @@ vectorizer = TfidfVectorizer(max_features=500)
 X = vectorizer.fit_transform(df["message"].astype(str)).toarray()
 y = df["appropriate"].apply(encodeAppropriate)
 input_size = X.shape[1]
+X = torch.FloatTensor(X)
 
 
 
@@ -51,12 +52,11 @@ class Model(nn.Module):
         x = self.out(x)
         return x
 
-X = torch.FloatTensor(X)
 y = torch.LongTensor(df["appropriate"].apply(encodeAppropriate).values)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)
 torch.manual_seed(41)
 model = Model()
-criterion = nn.BCEWithLogitsLoss()
+criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
 # train it
