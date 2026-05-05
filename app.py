@@ -19,7 +19,12 @@ def login():
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
-    pass
+    if request.method == "GET":
+        return render_template("signup.html")
+
+    elif request.method == "POST":
+        return render_template("home.html")
+
 
 @app.route("/signupData", methods=["GET"])
 def signupData():
