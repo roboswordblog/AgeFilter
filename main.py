@@ -86,3 +86,16 @@ with torch.no_grad():
     print(f"Test Accuracy: {accuracy.item():.4f}")
 with torch.no_grad():
     model.eval()
+appropriateMap = {
+    0:"Approprate",
+    1:"NONE APPROPRiATE"
+}
+user_input = input("\nEnter a message (or type 'quit' to stop): ")
+input_vector = vectorizer.transform([user_input]).toarray()
+input_tensor = torch.FloatTensor(input_vector)
+
+with torch.no_grad():
+    output = model(input_tensor)
+    prediction = torch.argmax(output, dim=1).item()
+
+    print(f"Predicted: {appropriateMap[prediction]}")
