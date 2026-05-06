@@ -23,17 +23,23 @@ def signup():
         return render_template("signup.html")
 
     elif request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        age = request.form.get("age", "0")  # optional
+
+        addUsers(username, password, age)
         return render_template("home.html")
 
 
 @app.route("/signupData", methods=["GET"])
 def signupData():
     return {"takenUsers": getAllUsers()}
-
-@app.route("/sendMessage", methods=["GET"])
+    
+@app.route("/sendMessage", methods=["POST"])
 def sendMessage():
-    addMessage(request.form["sentName"],request.form["post"])
-
+    data = request.get_json()
+    addMessage(data["sentName"], data["post"])
+    return {"status": "ok"}
 @app.route("/getAllMessages")
 def getMessages():
     # get all the messages from the file and see which ones the frontend doesn't have

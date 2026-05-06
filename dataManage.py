@@ -8,12 +8,12 @@ def getAllUsers():
 
 def addUsers(username,password,age):
     files = open("webData/users.csv", "a")
-    files.write(f"{username},{password},{age}")
+    files.write(f"{username},{password},{age}\n")
     files.close()
 
 def addMessage(user, message):
     files = open("webdata/chatLogs.csv", "a")
-    files.write(f"{user},{message}")
+    files.write(f"{user},{message}\n")
     files.close()
 
 
