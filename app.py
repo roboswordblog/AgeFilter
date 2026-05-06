@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from dataManage import *
+# import main
 app  = Flask(__name__)
 
 @app.route("/")
@@ -38,6 +39,11 @@ def sendMessage():
 def getMessages():
     # get all the messages from the file and see which ones the frontend doesn't have
     pass
+
+@app.route("/verifyMessages")
+def verifyMessages():
+    # veryify whether the messages are appropriate or innapropriate
+    passs
 
 
 app.run(debug=True)
