@@ -32,7 +32,7 @@ def signupData():
 
 @app.route("/sendMessage")
 def sendMessage():
-    addMessage(request.form["sentName"],request.form["post"] )
+    addMessage(request.form["sentName"],request.form["post"])
 
 @app.route("/getAllMessages")
 def getMessages():
