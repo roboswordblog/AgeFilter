@@ -3,11 +3,13 @@ def getAllUsers():
     users = []
     for line in files.read().split("\n"):
         users.append(line.split(",")[0])
+    files.close()
     return users
 
 def addUsers(username,password,age):
     files = open("webData/users.csv", "a")
     files.write(f"{username},{password},{age}")
+    files.close()
 
 def checkUsers():
     pass
