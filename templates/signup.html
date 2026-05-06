@@ -122,9 +122,11 @@ body {
 </form>
 </div>
 <script>
-function check(){
-    // add some ajax to get it
-    // also make it so that the style of it changes the error from hidden to none hidden
+    var data = {}
+async function check(){
+    const response = await fetch("/signupdata");
+    const data = await response.json();
+
 }
 </script>
 
