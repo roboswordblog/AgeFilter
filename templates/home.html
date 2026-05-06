@@ -43,15 +43,29 @@
         <input name="sentName" type="hidden" value="{username}">
         <input name="post">
         <button onclick="sendMessage()">Send Post</button>
-
     </div>
     <script>
         var messages = {}
         function sendMessage(){
+          const data = {
+    username: document.getElementById('username').value,
+    email: document.getElementById('email').value
+};
 
+fetch('/sendMessage', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+})
+.then(response => response.json())
+.then(result => console.log('Success:', result))
+.catch(error => console.error('Error:', error));
         }
         function getMessages(){
 
         }
+        setInterval(getMessages, 1000)
     </script>
 </body>
