@@ -30,7 +30,7 @@ def signup():
 def signupData():
     return {"takenUsers": getAllUsers()}
 
-@app.route("/sendMessage")
+@app.route("/sendMessage", methods=["GET"])
 def sendMessage():
     addMessage(request.form["sentName"],request.form["post"])
 

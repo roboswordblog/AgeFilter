@@ -91,17 +91,17 @@ body{
         <p>AGE FILTER</p>
     </div>
     <div class="sendMessage">
-        <input name="sentName" type="hidden" value="{username}" id="username">
+        <input name="sentName" type="hidden" value="{{ username }}" id="username">
         <input name="post" id="email">
         <button onclick="sendMessage()">Send Post</button>
     </div>
     <script>
         var messages = {}
         function sendMessage(){
-          const data = {
-    username: document.getElementById('username').value,
-    email: document.getElementById('email').value
-};
+  const data = {
+    sentName: document.getElementById('username').value,
+    post: document.getElementById('email').value
+}
 
 fetch('/sendMessage', {
     method: 'POST',
