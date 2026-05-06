@@ -40,10 +40,18 @@
         <p>AGE FILTER</p>
     </div>
     <div class="sendMessage">
-        <form action="/sendMesage" method="POST">
-            <input name="sentName" type="hidden" value="{username}">
-            <input name="post">
-            <button type="submit">Send Post</button>
-        </form>
+        <input name="sentName" type="hidden" value="{username}">
+        <input name="post">
+        <button onclick="sendMessage()">Send Post</button>
+
     </div>
+    <script>
+        var messages = {}
+        function sendMessage(){
+
+        }
+        function getMessages(){
+
+        }
+    </script>
 </body>
