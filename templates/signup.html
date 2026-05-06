@@ -118,7 +118,7 @@ body {
 <form method="POST" action="/signup">
     <input name="username" id="username">
     <input name="password" type="password">
-    <button type="submit">Signup</button>
+    <button type="submit" id="signup">Signup</button>
 </form>
 </div>
 <script>
@@ -130,8 +130,10 @@ async function check(){
 
 if (data.takenUsers.includes(username)) {
     document.getElementById("errorBox").style.display = "block";
+    document.getElementById("signup").disabled = true
 } else {
     document.getElementById("errorBox").style.display = "none";
+    document.getElementById("signup").enabled = false
 }
 }
 setInterval(check, 1000);
