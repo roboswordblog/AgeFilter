@@ -43,7 +43,7 @@ def getMessages():
 @app.route("/verifyMessages")
 def verifyMessages():
     # veryify whether the messages are appropriate or innapropriate
-    passs
+    pass
 
 
 app.run(debug=True)
