@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-
+from dataManage import *
 app  = Flask(__name__)
 
 @app.route("/")
@@ -27,6 +27,6 @@ def signup():
 
 @app.route("/signupData", methods=["GET"])
 def signupData():
-    return {"takenUsers": ["TANKYBOBBY", "32DJXE", "Robosword"]}
+    return {"takenUsers": getAllUsers()}
 
 app.run(debug=True)
