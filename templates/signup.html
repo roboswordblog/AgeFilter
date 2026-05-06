@@ -126,14 +126,15 @@ var data = {}
 async function check(){
     const response = await fetch("/signupData");
     data = await response.json();
-    if (document.getElementById("username") in data.takenUsers){
-        document.getElementById("errorBox").style.display = "block";
-    } 
-    else{
-     document.getElementById("errorBox").style.display = "none";
-    }
+   const username = document.getElementById("username").value;
+
+if (data.takenUsers.includes(username)) {
+    document.getElementById("errorBox").style.display = "block";
+} else {
+    document.getElementById("errorBox").style.display = "none";
 }
-setInterval(check, 100);
+}
+setInterval(check, 1000);
 </script>
 
 </body>
