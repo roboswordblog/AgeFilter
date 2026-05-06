@@ -42,7 +42,7 @@ def getMessages():
 
 @app.route("/verifyMessages")
 def verifyMessages():
-    # veryify whether the messages are appropriate or innapropriate
+    # verify whether the messages are appropriate or inappropriate
     pass
 
 
