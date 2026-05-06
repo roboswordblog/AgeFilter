@@ -101,7 +101,7 @@ body {
 <div class="navbar">
 <P>AGE FILTER</P>
 </div>
-<div class="errorBox">
+<div class="errorBox" id="errorBox">
     <h1>THIS USERNAME IS TAKEN</h1>
 </div>
 <br>
@@ -127,10 +127,10 @@ async function check(){
     const response = await fetch("/signupData");
     data = await response.json();
     if (document.getElementById("username") in data.takenUsers){
-
+        document.getElementById("errorBox").style.display = "block";
     } 
     else{
-        
+
     }
 }
 </script>
