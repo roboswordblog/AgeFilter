@@ -32,8 +32,7 @@ def signupData():
 
 @app.route("/sendMessage")
 def sendMessage():
-    # add the message to the rest of the messages in the file along with the username
-    pass
+    addMessage(request.get())
 
 @app.route("/getAllMessages")
 def getMessages():
