@@ -12,7 +12,7 @@ def addUsers(username,password,age):
     files.close()
 
 def addMessage(user, message):
-    files = open("webdata/chatLogs.csv", "a")
+    files = open("webData/chatLogs.csv", "a")
     files.write(f"{user},{message}\n")
     files.close()
 
