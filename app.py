@@ -27,6 +27,6 @@ def signup():
 
 @app.route("/signupData", methods=["GET"])
 def signupData():
-    return {"takenUsers": ["TANKY HACKY", "32DJXE", "Robosword"]}
+    return {"takenUsers": ["TANKYBOBBY", "32DJXE", "Robosword"]}
 
 app.run(debug=True)

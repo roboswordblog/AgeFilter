@@ -116,7 +116,7 @@ body {
 <p>Signup</p>
 
 <form method="POST" action="/signup">
-    <input name="username">
+    <input name="username" id="username">
     <input name="password">
     <button type="submit">Signup</button>
 </form>
@@ -124,9 +124,14 @@ body {
 <script>
 var data = {}
 async function check(){
-    const response = await fetch("/signupdata");
-    const data = await response.json();
+    const response = await fetch("/signupData");
+    data = await response.json();
+    if (document.getElementById("username") in data.takenUsers){
 
+    } 
+    else{
+        
+    }
 }
 </script>
 
