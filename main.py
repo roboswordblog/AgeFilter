@@ -99,3 +99,4 @@ with torch.no_grad():
     prediction = torch.argmax(output, dim=1).item()
 
     print(f"Predicted: {appropriateMap[prediction]}")
+torch.save(model.state_dict(), f'{ageGroup}.pth')
