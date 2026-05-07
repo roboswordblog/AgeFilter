@@ -116,10 +116,31 @@ fetch('/sendMessage', {
 document.getElementById('email').value = "";
         }
         var data = {}
-        async function getMessages(){
-            const response = await fetch("/getAllData");
-            data = await response.json();
+        var messageList = [];async function getMessages() {
+    const response = await fetch("/getAllData");
+    const data = await response.json();
+
+    const container = document.getElementById("messagesContainer");
+
+    data.messages.forEach((message, index) => {
+
+        // Only add messages that are not already displayed
+        if (index >= messageList.length) {
+
+            const newDiv = document.createElement('div');
+            newDiv.className = "message";
+
+            newDiv.innerHTML = `
+                <div class="username">${message.sentName}</div>
+                <p>${message.post}</p>
+            `;
+
+            container.appendChild(newDiv);
+
+            messageList.push(message);
         }
+    });
+}
 
         setInterval(getMessages, 1000)
     </script>

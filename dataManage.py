@@ -17,11 +17,11 @@ def addMessage(user, message):
     files.close()
 
 def getMessages():
-    files = open("webDdata/chatLogs.csv", "r")
+    files = open("webData/chatLogs.csv", "r")
     things = []
-    for i in files.read().split("\n")
+    for i in files.read().split("\n"):
         things.append(i.split(","))
     return things
-    
+
 def checkUsers():
     pass
