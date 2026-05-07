@@ -16,7 +16,7 @@ def addMessage(user, message):
     files.write(f"\n{user},{message}")
     files.close()
 
-def getMessages():
+def getAllMessages():
     files = open("webData/chatLogs.csv", "r")
     things = []
     for i in files.read().split("\n"):

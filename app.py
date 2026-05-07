@@ -40,7 +40,7 @@ def sendMessage():
     data = request.get_json()
     addMessage(data["sentName"], data["post"])
     return {"status": "ok"}
-@app.route("/getAllMessages")
+@app.route("/getAllData")
 def getMessages():
     return {"messages": getAllMessages()}
 
