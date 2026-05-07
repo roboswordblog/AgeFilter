@@ -115,9 +115,12 @@ fetch('/sendMessage', {
 .catch(error => console.error('Error:', error));
 document.getElementById('email').value = "";
         }
-        function getMessages(){
-
+        var data = {}
+        async function getMessages(){
+            const response = await fetch("/getAllData");
+            data = await response.json();
         }
+
         setInterval(getMessages, 1000)
     </script>
 </body>

@@ -42,8 +42,7 @@ def sendMessage():
     return {"status": "ok"}
 @app.route("/getAllMessages")
 def getMessages():
-    # get all the messages from the file and see which ones the frontend doesn't have
-    pass
+    return {"messages": getAllMessages()}
 
 @app.route("/verifyMessages")
 def verifyMessages():
