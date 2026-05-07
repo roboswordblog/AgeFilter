@@ -18,10 +18,23 @@ def addMessage(user, message):
 
 def getAllMessages():
     files = open("webData/chatLogs.csv", "r")
-    things = []
-    for i in files.read().split("\n"):
-        things.append(i.split(","))
-    return things
 
+    things = []
+
+    for i in files.read().split("\n"):
+
+        if i.strip() == "":
+            continue
+
+        parts = i.split(",")
+
+        things.append({
+            "sentName": parts[0],
+            "post": parts[1]
+        })
+
+    files.close()
+
+    return things
 def checkUsers():
     pass

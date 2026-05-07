@@ -28,7 +28,7 @@ def signup():
         age = request.form.get("age", "0")  # optional
 
         addUsers(username, password, age)
-        return render_template("home.html")
+        return render_template("home.html", username=username)
 
 
 @app.route("/signupData", methods=["GET"])
