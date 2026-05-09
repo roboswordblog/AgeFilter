@@ -1,9 +1,14 @@
-from flask import Flask, render_template, request
+import random
+
+from flask import Flask, render_template, request, session
 from dataManage import *
 import getMachinedata
 
 app = Flask(__name__)
 age = 0
+
+app.secret_key = "HIyABENJALInG"
+
 
 @app.route("/")
 def index():
@@ -18,8 +23,10 @@ def signup():
 
     elif request.method == "POST":
         username = request.form["username"]
-        age = request.form.get("age", "0")
+        age = request.form.get("agegroup")
         addUsers(username, age)
+        session["username"] = username
+        session["agegroup"] = age
         return render_template("home.html", username=username)
     return None
 
@@ -38,7 +45,14 @@ def sendMessage():
 
 @app.route("/getAllData")
 def getMessages():
-    return {"messages": getAllMessages()}
+    agegroup = session.get("agegroup")
+
+    messages = getAllMessages()
+    for e, i in enumerate(messages):
+        if getMachinedata.runModel(agegroup, i) == "NONAPPROPRIATE":
+            messages[e] = random.choice(["*" ,"#"]) * random.randint(5,8)
+
+    return {"messages": messages}
 
 
 if __name__ == "__main__":

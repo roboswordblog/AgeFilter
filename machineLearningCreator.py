@@ -100,3 +100,7 @@ with torch.no_grad():
 
     print(f"Predicted: {appropriateMap[prediction]}")
 torch.save(model.state_dict(), f'models/{ageGroup}.pth')
+import pickle
+
+with open(f"models/{ageGroup}_vectorizer.pkl", "wb") as f:
+    pickle.dump(vectorizer, f)

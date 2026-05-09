@@ -35,7 +35,7 @@ def loadModel(ageGroup):
 
 
 def loadVectorizer(ageGroup):
-    with open(f"models/{ageGroup}_vectorizer.pkl", "rb") as f:
+    with open(f"models/{ageGroup}.pth", "rb") as f:
         return pickle.load(f)
 
 def runModel(ageGroup, message):
