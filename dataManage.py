@@ -6,9 +6,9 @@ def getAllUsers():
     files.close()
     return users
 
-def addUsers(username,password,age):
+def addUsers(username,age):
     files = open("webData/users.csv", "a")
-    files.write(f"\n{username},{password},{age}")
+    files.write(f"\n{username},{age}")
     files.close()
 
 def addMessage(user, message):
