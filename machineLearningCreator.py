@@ -87,8 +87,8 @@ with torch.no_grad():
 with torch.no_grad():
     model.eval()
 appropriateMap = {
-    0:"Approprate",
-    1:"NONAPPROPRiATE"
+    1:"Approprate",
+    0:"NONAPPROPRiATE"
 }
 user_input = input("\nEnter a message (or type 'quit' to stop): ")
 input_vector = vectorizer.transform([user_input]).toarray()
