@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from dataManage import *
-# import main
+import getMachinedata
 app  = Flask(__name__)
 
 @app.route("/")
