@@ -95,6 +95,28 @@ body {
 .card button:hover {
     background: #357abd;
 }
+    /* Dropdown */
+.card select {
+    width: 95%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background: white;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Dropdown hover/focus */
+.card select:hover {
+    border-color: #4a90e2;
+}
+
+.card select:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
 </style>
 </head>
 <body>
@@ -139,7 +161,7 @@ if (data.takenUsers.includes(username)) {
     document.getElementById("signup").disabled = true
 } else {
     document.getElementById("errorBox").style.display = "none";
-    document.getElementById("signup").enabled = false
+    document.getElementById("signup").disabled = false
 }
 }
 setInterval(check, 1000);
