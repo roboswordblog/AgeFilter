@@ -99,3 +99,17 @@ import pickle
 
 with open(f"models/{ageGroup}_vectorizer.pkl", "wb") as f:
     pickle.dump(vectorizer, f)
+import json
+
+config = {
+    "input_size": input_size,
+    "hidden1": 100,
+    "hidden2": 32,
+    "hidden3": 16,
+    "hidden4": 8,
+    "output_size": 2,
+    "vectorizer_max_features": 500
+}
+
+with open(f"models/{ageGroup}_config.json", "w") as f:
+    json.dump(config, f)

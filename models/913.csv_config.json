@@ -1,0 +1,1 @@
+{"input_size": 63, "hidden1": 100, "hidden2": 32, "hidden3": 16, "hidden4": 8, "output_size": 2, "vectorizer_max_features": 500}
