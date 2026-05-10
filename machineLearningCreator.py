@@ -6,11 +6,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 
-def encodeAppropriate(x):
-    if x == "Yes":
-        return 1.0
-    else:
-        return 0.0
 
 age = int(input("What is your age? "))
 ageGroup = ""
@@ -28,7 +23,7 @@ df = pd.read_csv(f"data/{ageGroup}")
 
 vectorizer = TfidfVectorizer(max_features=500)
 X = vectorizer.fit_transform(df["message"].astype(str)).toarray()
-y = df["appropriate"].apply(encodeAppropriate)
+y = df["appropriate"]
 input_size = X.shape[1]
 X = torch.FloatTensor(X)
 
@@ -52,8 +47,8 @@ class Model(nn.Module):
         x = self.out(x)
         return x
 
-y = torch.LongTensor(df["appropriate"].apply(encodeAppropriate).values)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)
+y = torch.LongTensor(df["appropriate"].values)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=True)
 torch.manual_seed(41)
 model = Model()
 criterion = nn.CrossEntropyLoss()
