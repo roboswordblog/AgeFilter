@@ -113,3 +113,4 @@ config = {
 
 with open(f"models/{ageGroup}_config.json", "w") as f:
     json.dump(config, f)
+print("DONE")
